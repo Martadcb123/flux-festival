@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flux Festival</title>
+    <link rel="stylesheet" href="./css/index.css">
+    <script src="./js/index.js" defer></script>
+</head>
+<body>
+
+
+<!--Comenzamos por el header, con una metodología BEM. El header incluye el logo del 
+festival y el CTA para comprar las entradas. También el <nav> con las diferentes secciones,
+que contienen un ancla en el enlace para navegar facilmente por la web.  -->
+
+<header class="header">
+    <h1 class="header__h1"><a href="#home" class="header__a" title="FLUX FESTIVAL"><img src="assets/svg/logo.svg" alt="Flux Festival"> </a></h1>
+    <h2 class="header__h2"><a href="#" class="header__a--tickets" title="Tickets" target="_blank" rel="noreferrer"><img class="header__img" src="./assets/svg/tickets_3.svg" alt="Comprar entradas"></a></h2>
+    <!--Creamos el button con su clase para hacer el menú interactivo en el responsive con JS-->
+    <button class="header__nav--menu" title="Menu"><img src="assets/svg/menu.svg" alt="Menu"></button>
+    <nav class="header__nav">
+        <ul class="header__ul">
+            <li class="header__li"><a href="#section__artistas" class="header__a--nav" title="Artistas">Artistas</a></li>
+            <li class="header__li"><a href="agenda.html" class="header__a--nav" title="Agenda">Agenda</a></li>
+            <li class="header__li"><a href="about.html" class="header__a--nav" title="About">About</a></li>
+            
+        </ul></nav>
+</header>
+
+
+
+<main class="main">
+
+
+    <!--Dentro del main tenemos una primera sección que funciona como fondo de la home,
+    con un peso muy visual. Por eso se compone de dos carrouseles: uno de vídeo y otro de
+    información sobre los artistas que aparecen. A través de js, clicaremos en los buttons 
+    para mover ambos elementos de izquierda a derecha-->
+
+
+    <div id="home">
+        
+        <div class="carrousel__arrow">
+            <button class="carrousel__arrow--prev" title="prev">&#x3008;</button> 
+            <button class="carrousel__arrow--next" title="next">&#x3009;</button>
+         </div>
+            
+
+     
+        <div class="carrousel__video">
+            <div class="carrousel__video--wrapper">
+                <video autoplay loop playsinline preload="none" 
+                 src="assets/webm/taiat.webm" class="carrousel__video--vd">
+                </video>
+                <video autoplay loop playsinline preload="none" 
+                 src="assets/webm/basal.webm" class="carrousel__video--vd">
+                </video>
+                <video autoplay loop playsinline preload="none" 
+                 src="assets/webm/ninas.webm" class="carrousel__video--vd">
+                </video>
+                <video autoplay loop playsinline preload="none" 
+                 src="assets/webm/tristura.webm" class="carrousel__video--vd">
+                </video>
+                <video autoplay loop playsinline preload="none"
+                 src="assets/webm/veronal.webm" class="carrousel__video--vd">
+                </video>
+                <video autoplay loop playsinline preload="none" 
+                 src="assets/webm/malala.webm" class="carrousel__video--vd"
+                 ></video>
+                <video autoplay loop playsinline preload="none" 
+                 src="assets/webm/iniciativa.webm" class="carrousel__video--vd">
+                </video>
+                <video autoplay loop playsinline preload="none" 
+                 src="assets/webm/abandonada.webm" class="carrousel__video--vd" >
+                </video>
+                <video autoplay loop playsinline preload="none" 
+                 src="assets/webm/nikita.webm" class="carrousel__video--vd" >
+                </video>
+            </div>
+
+        </div>
+        <div class="carrousel__info">
+          <div class="carrousel__info--wrapper">
+            <ul class="carrousel__ul">
+                <li class="carrousel__li--artist">Taiat Dansa</li>
+                <li class="carrousel__li--date">26.09.2025</li>
+            </ul>
+            <ul class="carrousel__ul">
+                <li class="carrousel__li--artist">La Basal</li>
+                <li class="carrousel__li--date">26.09.2025</li>
+            </ul>
+            <ul class="carrousel__ul">
+                <li class="carrousel__li--artist">Las Niñas</li>
+                <li class="carrousel__li--date">26.09.2025</li>
+            </ul>
+            <ul class="carrousel__ul">
+                <li class="carrousel__li--artist">La Tristura</li>
+                <li class="carrousel__li--date">27.09.2025</li>
+            </ul>
+            <ul class="carrousel__ul">
+                <li class="carrousel__li--artist">La Veronal</li>
+                <li class="carrousel__li--date">27.09.2025</li>
+            </ul>
+           
+            <ul class="carrousel__ul carrousel__ul--lower">
+                <li class="carrousel__li--artist">Malala Producciones</li>
+                <li class="carrousel__li--date">27.09.2025</li>
+            </ul>
+            <ul class="carrousel__ul carrousel__ul--lower">
+                <li class="carrousel__li--artist">Iniciativa Sexual Femenina</li>
+                <li class="carrousel__li--date">28.09.2025</li>
+            </ul>
+            <ul class="carrousel__ul">
+                <li class="carrousel__li--artist">La Abandonada</li>
+                <li class="carrousel__li--date">28.09.2025</li>
+            </ul>
+            <ul class="carrousel__ul">
+                <li class="carrousel__li--artist">Nikita</li>
+                <li class="carrousel__li--date">28.09.2025</li>
+            </ul>
+
+          </div>
+        </div>
+
+         
+    </div>
+
+
+<!--Continuamos con la sección de artistas, una presentación de las compañías 
+    que participan en el festival. De esta manera, tenemos la etiqueta <section> con un
+    #id que sirve como ancla para el nav. La section incluye un <h2> con el título de la
+    sección (seo) y un div wrapper que contiene la grid, y en cada una de las cajas de la grid 
+    tenemos una etiqueta <picture> y un div de información. 
+
+        - La etiqueta <picture> incluye, además de la imagen en webp, la imagen en 
+        jpg para la navegación por safari, con sus adaptaciones en base a compatibilidad-->
+
+    <section id="section__artistas">
+
+        <h2 class="artistas__h2">Compañías seleccionadas</h2>
+
+        <div class="artistas__wrapper">
+            <div class="artistas__wrapper--box">
+                <div class="artistas__wrapper--img">
+                <picture>
+                    <source srcset="assets/webp/taiat.webp" type="image/webp">
+                    <img src="assets/jpg/taiat.jpg" alt="Taiat Dansa" fetchpriority="high">
+                </picture>
+                </div>
+                <div class="artistas__wrapper--info">
+                    <p class="artistas__wrapper--name">Taiat Dansa</p>
+                    <ul class="artistas__wrapper--link">
+                        <li><a href="#" class="artistas__wrapper--a" target="_blank" rel="noreferrer" title="Instagram">IG</a></li>
+                        <li><a href="#" class="artistas__wrapper--a" target="_blank" rel="noreferrer" title="web">WEB</a></li>
+                        <li><a href="#" class="artistas__wrapper--a" target="_blank" rel="noreferrer" title="Youtube">YT</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="artistas__wrapper--box">
+                <div class="artistas__wrapper--img">
+                <picture>
+                    <source srcset="assets/webp/la_basal.webp" type="image/webp">
+                    <img src="assets/jpg/la_basal.jpg" alt="La Basal" fetchpriority="high">
+                </picture>
+                </div>
+                <div class="artistas__wrapper--info">
+                    <p class="artistas__wrapper--name">La Basal</p>
+                    <ul class="artistas__wrapper--link">
+                        <li><a href="#" class="artistas__wrapper--a" target="_blank" rel="noreferrer" title="Instagram">IG</a></li>
+                        <li><a href="#" class="artistas__wrapper--a" target="_blank" rel="noreferrer" title="web">WEB</a></li>
+                        <li><a href="#" class="artistas__wrapper--a" target="_blank" rel="noreferrer" title="Youtube">YT</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="artistas__wrapper--box">
+                <div class="artistas__wrapper--img">
+                <picture>
+                    <source srcset="assets/webp/malala_2.webp" type="image/webp">
+                    <img src="assets/jpg/malala.jpg" alt="Malala Producciones" fetchpriority="high">
+                </picture>
+                </div>
+                <div class="artistas__wrapper--info">
+                    <p class="artistas__wrapper--name artistas__wrapper--lower">Malala Producciones</p>
+                    <ul class="artistas__wrapper--link">
+                        <li><a href="#" class="artistas__wrapper--a" target="_blank" rel="noreferrer" title="Instagram">IG</a></li>
+                        <li><a href="#" class="artistas__wrapper--a" target="_blank" rel="noreferrer" title="web">WEB</a></li>
+                        <li><a href="#" class="artistas__wrapper--a" target="_blank" rel="noreferrer" title="Youtube">YT</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="artistas__wrapper--box">
+                <div class="artistas__wrapper--img">
+                <picture>
+                    <source srcset="assets/webp/la_tristura.webp" type="image/webp">
+                    <img src="assets/jpg/la_tristura.jpg" alt="La Tristura" fetchpriority="high">
+                </picture>
+                </div>
+                <div class="artistas__wrapper--info">
+                    <p class="artistas__wrapper--name">La Tristura</p>
+                    <ul class="artistas__wrapper--link">
+                        <li><a href="#" class="artistas__wrapper--a" target="_blank" rel="noreferrer" title="Instagram">IG</a></li>
+                        <li><a href="#" class="artistas__wrapper--a" target="_blank" rel="noreferrer" title="web">WEB</a></li>
+                        <li><a href="#" class="artistas__wrapper--a" target="_blank" rel="noreferrer" title="Youtube">YT</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="artistas__wrapper--box">
+                <div class="artistas__wrapper--img">
+                <picture>
+                    <source srcset="assets/webp/veronal.webp" type="image/webp">
+                    <img src="assets/jpg/veronal.jpg" alt="La Veronal" fetchpriority="high">
+                </picture>
+                </div>
+                <div class="artistas__wrapper--info">
+                    <p class="artistas__wrapper--name">La Veronal</p>
+                    <ul class="artistas__wrapper--link">
+                        <li><a href="#" class="artistas__wrapper--a" target="_blank" rel="noreferrer" title="Instagram">IG</a></li>
+                        <li><a href="#" class="artistas__wrapper--a" target="_blank" rel="noreferrer" title="web">WEB</a></li>
+                        <li><a href="#" class="artistas__wrapper--a"  target="_blank" rel="noreferrer" title="Youtube">YT</a></li>
+                    </ul>
+                </div>
+            </div>
+           
+            <div class="artistas__wrapper--box">
+                <div class="artistas__wrapper--img">
+                <picture>
+                    <source srcset="assets/webp/las_ninas.webp" type="image/webp">
+                    <img src="assets/jpg/las_ninas.jpg" alt="Las Niñas" fetchpriority="high">
+                </picture>
+                </div>
+                <div class="artistas__wrapper--info">
+                    <p class="artistas__wrapper--name">Las Niñas</p>
+                    <ul class="artistas__wrapper--link">
+                        <li><a href="#" class="artistas__wrapper--a" target="_blank" rel="noreferrer" title="Instagram">IG</a></li>
+                        <li><a href="#" class="artistas__wrapper--a" target="_blank" rel="noreferrer" title="web">WEB</a></li>
+                        <li><a href="#" class="artistas__wrapper--a" target="_blank" rel="noreferrer" title="Youtube">YT</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="artistas__wrapper--box">
+                <div class="artistas__wrapper--img">
+                <picture>
+                    <source srcset="assets/webp/iniciativa_sef.webp" type="image/webp">
+                    <img src="assets/jpg/iniciativa_sef.jpg" alt="Iniciativa Sexual Femenina" loading="lazy">
+                </picture>
+                 </div>
+                <div class="artistas__wrapper--info">
+                    <p class="artistas__wrapper--name artistas__wrapper--lower">Iniciativa Sexual Femenina</p>
+                    <ul class="artistas__wrapper--link">
+                        <li><a href="#" class="artistas__wrapper--a" target="_blank" rel="noreferrer" title="Instagram">IG</a></li>
+                        <li><a href="#" class="artistas__wrapper--a" target="_blank" rel="noreferrer" title="web">WEB</a></li>
+                        <li><a href="#" class="artistas__wrapper--a" target="_blank" rel="noreferrer" title="Youtube">YT</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="artistas__wrapper--box">
+                <div class="artistas__wrapper--img">
+                <picture>
+                    <source srcset="assets/webp/nikita.webp" type="image/webp">
+                    <img src="assets/jpg/nikita.jpg" alt="Nikita" loading="lazy">
+                </picture>
+                </div>
+                <div class="artistas__wrapper--info">
+                    <p class="artistas__wrapper--name">Nikita</p>
+                    <ul class="artistas__wrapper--link">
+                        <li><a href="#" class="artistas__wrapper--a" target="_blank" rel="noreferrer" title="Instagram">IG</a></li>
+                        <li><a href="#" class="artistas__wrapper--a" target="_blank" rel="noreferrer" title="web">WEB</a></li>
+                        <li><a href="#" class="artistas__wrapper--a" target="_blank" rel="noreferrer" title="Youtube">YT</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="artistas__wrapper--box">
+                <div class="artistas__wrapper--img">
+                <picture>
+                    <source srcset="assets/webp/abandonada.webp" type="image/webp">
+                    <img src="assets/jpg/abandonada.jpg" alt="La Abandonada" loading="lazy">
+                </picture>
+                 </div>
+                <div class="artistas__wrapper--info">
+                    <p class="artistas__wrapper--name">La Abandonada</p>
+                    <ul class="artistas__wrapper--link">
+                    <li><a href="#" class="artistas__wrapper--a" target="_blank" rel="noreferrer" title="Instagram">IG</a></li>
+                    <li><a href="#" class="artistas__wrapper--a" target="_blank" rel="noreferrer" title="web">WEB</a></li>
+                    <li><a href="#" class="artistas__wrapper--a" target="_blank" rel="noreferrer" title="Youtube">YT</a></li>
+                    </ul>
+                </div>
+
+            </div>
+            
+        </div>
+
+    </section>
+
+   
+
+</main>
+
+<!--El footer incluye todos los logos de las instituciones que participan de alguna manera en el festival
+y el copyright de la página del festival-->
+
+<footer>
+
+    <div class="footer__wrapper">
+        <div class="organisms__footer">
+            <div class="colab__footer">
+                <p>Colabora:</p>
+                <img class="colab__footer--img" src="assets/svg/r3.svg" alt="radio3" loading="lazy">   
+            </div>
+
+            <div class="support__footer">
+                <p>Con el soporte de:</p>
+                <ul class="support__footer--ul">
+                    
+                    <li class="support__footer--li"><img src="assets/svg/mataderoldpi.svg" alt="Matadero" loading="lazy"></li>
+                    <li class="support__footer--li"><img src="assets/svg/madridldpi.svg" alt="Ayuntamiento de Madrid" loading="lazy"></li>
+                    <li class="support__footer--li"><img src="assets/svg/injuveldpi.svg" alt="injuve" loading="lazy"></li>
+                    <li class="support__footer--li "><img src="assets/svg/inaem.svg" alt="Inaem" loading="lazy"></li>
+
+                </ul>
+            </div>
+            <div class="partner__footer">
+                <p>Partner:</p>
+                <img class="partner__footer--img" src="assets/svg/mahou_logo.svg" alt="Mahou">
+
+            </div>
+        </div>
+
+        <div class="info__footer">
+           <p class="info__footer--p">© Flux Festival 2025</p>
+          
+        </div>
+
+
+    </div>
+
+
+</footer>
+    
+    
+</body>
+</html>

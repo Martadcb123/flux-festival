@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flux Festival</title>
+    <link rel="stylesheet" href="css/agenda.css">
+    <script src="js/agenda.js" defer></script>
+
+</head>
+<body>
+
+    <!--Para el header, utilizaremos el mismo código que en el archivo de index.html-->
+
+    <header class="header">
+      <h1 class="header__h1"><a href="index.html" class="header__a" title="FLUX FESTIVAL"><img src="./assets/svg/logo.svg" alt="Flux Festival"> </a></h1>
+      <h2 class="header__h2"><a href="#" class="header__a--tickets" title="Tickets" target="_blank" rel="noreferrer"><img class="header__img" src="./assets/svg/tickets_3.svg" alt="Comprar entradas"></a></h2>
+      <!--Creamos el button con su clase para hacer el menú interactivo en el responsive con JS-->
+      <button class="header__nav--menu" title="Menu"><img src="./assets/svg/menu.svg" alt="Menu"></button>
+      <nav class="header__nav">
+          <ul class="header__ul">
+              <li class="header__li"><a href="index.html#section__artistas" class="header__a--nav" title="Artistas">Artistas</a></li>
+              <li class="header__li"><a href="agenda.html" class="header__a--nav" title="Agenda">Agenda</a></li>
+              <li class="header__li"><a href="about.html" class="header__a--nav" title="About">About</a></li>
+              
+          </ul></nav>
+  </header>
+    <main>
+
+        <!--SECTION AGENDA-->
+
+        <!--Consiste en varios bloques con la programación en base a los días que dura 
+        el festival, divididos en el escenario y los talleres, y cada bloque esconde un acordeón 
+        que se activará por JS. El acordeón incluye una etiqueta <p> con el título de la obra
+          de cada compañía o del taller y una imagen con etiqueta <picture> de cada actividad, en los
+            formatos webp y jpg para compatibilidad en función del navegador-->
+
+        <section class="section__agenda">
+
+            <!--26.09-->
+
+            <div class="agenda__container">  
+              <h2 class="agenda__date">26.09</h2>
+          
+              <!-- ESCENARIO -->
+              <div class="agenda__bloque">
+                
+                <div class="platform__escenario">Escenario</div>
+                
+                <div class="platform__artistas">
+                  <div class="platform__artistas--general">
+                    <div class="platform__artistas--name">Taiat Dansa</div>
+                    <div class="platform__artistas--time">11:00</div>
+                    <div class="acordeon__obra">
+                        <p class="acordeon__texto">Juegos de Bauhaus</p>
+                        <picture>
+                          <source srcset="assets/webp/taiat-ok.webp" type="image/webp">
+                          <img class="acordeon__img" src="assets/jpg/taiat-ok.jpg" alt="Taiat Dansa" loading="lazy">
+                      </picture>
+                      </div>
+                  </div>
+                  <div class="platform__artistas--general">
+                    <div class="platform__artistas--name">La Basal</div>
+                    <div class="platform__artistas--time">17:00</div>
+                    <div class="acordeon__obra">
+                        <p class="acordeon__texto">Apuntes Directos</p>
+                        <picture>
+                          <source srcset="assets/webp/basal_ok.webp" type="image/webp">
+                          <img class="acordeon__img" src="assets/jpg/basal-ok.jpg"  alt="Basal-Apuntes" loading="lazy">
+                      </picture>
+                      </div>
+                  </div>
+                  <div class="platform__artistas--general">
+                    <div class="platform__artistas--name">Las Niñas</div>
+                    <div class="platform__artistas--time">19:00</div>
+                    <div class="acordeon__obra">
+                        <p class="acordeon__texto">Historia de una...</p>
+                        <picture>
+                          <source srcset="assets/webp/ninas-ok.webp" type="image/webp">
+                          <img class="acordeon__img" src="assets/jpg/taiat-ok.jpg" alt="Taiat Dansa" loading="lazy">
+                      </picture>
+                      </div>
+                  </div>
+          
+                  
+          
+                </div>
+              </div>
+            </div>
+          
+              <!--TALLERES-->
+
+              <div class="agenda__bloque agenda__bloque--actividades">
+                <div class="platform__escenario">Talleres</div>
+              
+                <div class="platform__artistas">
+                  <div class="platform__artistas--general">
+                    <div class="platform__artistas--name">Alba G. Mora</div>
+                    <div class="platform__artistas--time">13:00</div>
+                    <div class="acordeon__obra">
+                        <p class="acordeon__texto">Paisajes Sonoros</p>
+                        <picture>
+                          <source srcset="assets/webp/alba_mora-ok.webp" type="image/webp">
+                          <img class="acordeon__img" src="assets/jpg/alba_mora-ok.jpg" alt="Alba-Mora" loading="lazy">
+                      </picture>
+                      </div>
+                  </div>
+                  <div class="platform__artistas--general">
+                    <div class="platform__artistas--name">Cybogrrls</div>
+                    <div class="platform__artistas--time">15:30</div>
+                    <div class="acordeon__obra">
+                        <p class="acordeon__texto">Tecnopoéticas</p>
+                        <picture>
+                          <source srcset="assets/webp/cibogrrl-ok.webp" type="image/webp">
+                          <img class="acordeon__img" src="assets/jpg/cibogrrl-ok.jpg" alt="Cybogrrls" loading="lazy">
+                      </picture>
+                      </div>
+                  </div>
+                  <div class="platform__artistas--general">
+                    <div class="platform__artistas--name lower">Mónica Valenciano</div>
+                    <div class="platform__artistas--time">17:00</div>
+                    <div class="acordeon__obra">
+                        <p class="acordeon__texto">Performance e identidad</p>
+                        <picture>
+                          <source srcset="assets/webp/monica_valenciano-ok.webp" type="image/webp">
+                          <img class="acordeon__img" src="assets/jpg/monica_valenciano-ok.jpg" alt="Monica-Performance" loading="lazy">
+                      </picture>
+                      </div>
+                  </div>
+                </div>
+              </div>
+
+              <!--27.09-->
+
+              <div class="agenda__container">  
+                <h2 class="agenda__date">27.09</h2>
+            
+                <!--ESCENARIO-->
+                <div class="agenda__bloque agenda__bloque--margin">
+                  
+                  <div class="platform__escenario">Escenario</div>
+                  
+                  <div class="platform__artistas">
+                    <div class="platform__artistas--general">
+                      <div class="platform__artistas--name">La Tristura</div>
+                      <div class="platform__artistas--time">11:00</div>
+                      <div class="acordeon__obra">
+                          <p class="acordeon__texto">Así hablábamos</p>
+                          <picture>
+                            <source srcset="assets/webp/tristura-ok.webp" type="image/webp">
+                            <img class="acordeon__img" src="assets/jpg/tristura-ok.jpg"  alt="Tristrura-Asi" loading="lazy">
+                        </picture>
+                        </div>
+                    </div>
+                    <div class="platform__artistas--general">
+                      <div class="platform__artistas--name">La Veronal</div>
+                      <div class="platform__artistas--time">17:00</div>
+                      <div class="acordeon__obra">
+                          <p class="acordeon__texto">Sonoma</p>
+                          <picture>
+                            <source srcset="assets/webp/veronal-ok.webp" type="image/webp">
+                            <img class="acordeon__img" src="assets/jpg/veronal-ok.jpg"  alt="Veronal-Sonoma" loading="lazy">
+                        </picture>
+                        </div>
+                    </div>
+                    <div class="platform__artistas--general">
+                      <div class="platform__artistas--name ">Malala Pd.</div>
+                      <div class="platform__artistas--time">19:00</div>
+                      <div class="acordeon__obra">
+                          <p class="acordeon__texto">Querido Capricho</p>
+                          <picture>
+                            <source srcset="assets/webp/malala-ok.webp" type="image/webp">
+                            <img class="acordeon__img" src="assets/jpg/malala-ok.jpg"  alt="Malala-Capricho" loading="lazy">
+                        </picture>
+                        </div>
+                    </div>
+            
+                    
+            
+                  </div>
+                </div>
+              </div>
+            
+                <!--TALLERES-->
+  
+                <div class="agenda__bloque agenda__bloque--actividades">
+                  <div class="platform__escenario">Talleres</div>
+                
+                  <div class="platform__artistas">
+                    <div class="platform__artistas--general">
+                      <div class="platform__artistas--name ">Niño de Elche</div>
+                      <div class="platform__artistas--time">13:00</div>
+                      <div class="acordeon__obra">
+                          <p class="acordeon__texto">Voz y presencia</p>
+                          <picture>
+                            <source srcset="assets/webp/nino-elche-ok.webp" type="image/webp">
+                            <img class="acordeon__img" src="assets/jpg/nino-elche-ok.jpg" alt="Nino-Voz" loading="lazy">
+                        </picture>
+                        </div>
+                    </div>
+                    <div class="platform__artistas--general">
+                      <div class="platform__artistas--name">Iron Skulls</div>
+                      <div class="platform__artistas--time">15:30</div>
+                      <div class="acordeon__obra">
+                          <p class="acordeon__texto">Danza y Anarquía</p>
+                          <picture>
+                            <source srcset="assets/webp/ironskulls-ok.webp" type="image/webp">
+                            <img class="acordeon__img" src="assets/jpg/ironskulls-ok.jpg" alt="Iron-danza" loading="lazy">
+                        </picture>
+                        </div>
+                    </div>
+                    <div class="platform__artistas--general">
+                      <div class="platform__artistas--name ">La Pharmaco</div>
+                      <div class="platform__artistas--time">17:00</div>
+                      <div class="acordeon__obra">
+                          <p class="acordeon__texto">Cuerpo expandido</p>
+                          <picture>
+                            <source srcset="assets/webp/pharmaco-ok.webp" type="image/webp">
+                            <img class="acordeon__img" src="assets/jpg/pharmaco-ok.jpg" alt="Pharmaco-Cuerpo" loading="lazy">
+                        </picture>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!--28.09-->
+
+                <div class="agenda__container">  
+                    <h2 class="agenda__date">28.09</h2>
+                
+                    <!--ESCENARIO-->
+                    <!--En este caso solo tenemos un bloque porque corresponde a compañías
+                    emergentes, con la categoría de invitadas al evento-->
+                    <div class="agenda__bloque ">
+                      
+                      <div class="platform__escenario">Escenario</div>
+                      
+                      <div class="platform__artistas">
+                        <div class="platform__artistas--general">
+                          <div class="platform__artistas--name lower">Iniciativa S.F.</div>
+                          <div class="platform__artistas--time">11:00</div>
+                          <div class="acordeon__obra">
+                              <p class="acordeon__texto">Perpetua Felicidad</p>
+                              <picture>
+                                <source srcset="assets/webp/iniciativa-ok.webp" type="image/webp">
+                                <img class="acordeon__img" src="assets/jpg/iniciativa-ok.jpg"  alt="Iniciativa-Perpetua" loading="lazy">
+                            </picture>
+                            </div>
+                        </div>
+                        <div class="platform__artistas--general">
+                          <div class="platform__artistas--name">La Abandonada</div>
+                          <div class="platform__artistas--time">17:00</div>
+                          <div class="acordeon__obra">
+                              <p class="acordeon__texto">Nadadores nocturnos</p>
+                              <picture>
+                                <source srcset="assets/webp/abandonada-ok.webp" type="image/webp">
+                                <img class="acordeon__img" src="assets/jpg/abandonada-ok.jpg"  alt="Abandonada-Nadadores" loading="lazy">
+                            </picture>
+                            </div>
+                        </div>
+                        <div class="platform__artistas--general">
+                          <div class="platform__artistas--name">Nikita</div>
+                          <div class="platform__artistas--time">19:00</div>
+                          <div class="acordeon__obra">
+                              <p class="acordeon__texto">Cómo son cuando...</p>
+                              <picture>
+                                <source srcset="assets/webp/nikita-ok.webp" type="image/webp">
+                                <img class="acordeon__img" src="assets/jpg/nikita-ok.jpg"  alt="Abandonada-Nadadores" loading="lazy">
+                            </picture>
+                            </div>
+                        </div>
+                
+                        
+                
+                      </div>
+                    </div>
+                  </div>
+                
+                    
+
+              
+          </section>
+          
+
+
+        
+
+    </main>
+
+    <!--El footer tiene la misma información que en el archivo index.html-->
+
+    <footer>
+
+      <div class="footer__wrapper">
+          <div class="organisms__footer">
+              <div class="colab__footer">
+                  <p>Colabora:</p>
+                  <img class="colab__footer--img" src="assets/svg/r3.svg" alt="radio3" loading="lazy">   
+              </div>
+  
+              <div class="support__footer">
+                  <p>Con el soporte de:</p>
+                  <ul class="support__footer--ul">
+                      
+                      <li class="support__footer--li"><img src="assets/svg/mataderoldpi.svg" alt="Matadero" loading="lazy"></li>
+                      <li class="support__footer--li"><img src="assets/svg/madridldpi.svg" alt="Ayuntamiento de Madrid" loading="lazy"></li>
+                      <li class="support__footer--li"><img src="assets/svg/injuveldpi.svg" alt="injuve" loading="lazy"></li>
+                      <li class="support__footer--li "><img src="assets/svg/inaem.svg" alt="Inaem" loading="lazy"></li>
+  
+                  </ul>
+              </div>
+              <div class="partner__footer">
+                  <p>Partner:</p>
+                  <img class="partner__footer--img" src="assets/svg/mahou_logo.svg" alt="Mahou">
+  
+              </div>
+          </div>
+  
+          <div class="info__footer">
+             <p class="info__footer--p">© Flux Festival 2025</p>
+            
+          </div>
+  
+  
+      </div>
+  
+  
+  </footer>
+</body>
+</html>
