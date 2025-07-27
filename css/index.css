@@ -1,0 +1,656 @@
+
+
+/* Añadimos el reset y definimos unas custom properties generales dentro del root que 
+usaremos en toda la web*/
+
+:root {
+    font-size : 100%;
+    font-family : system-ui, sans-serif;
+    scroll-behavior : smooth;
+    --color-primario: #ff7070;
+    --color-secundario: rgb(15, 15, 15);
+    --color-terciario: blanchedalmond;
+    --font-ppal: 'n27regular';
+    --num-videos: 10;
+  }
+  * , *::before , *::after {
+    margin : 0;
+    padding : 0;
+    border : 0;
+    box-sizing : border-box;
+    vertical-align : baseline;
+  }
+  *::before , *::after {
+    display : block;
+  }
+  img , picture , video , iframe , figure , canvas {
+    max-width : 100%;
+    display : block;
+    width : 100%;
+    height : 100%;
+    object-fit: cover;
+    object-position : center center;
+    overflow: hidden;
+    
+  }
+  a {
+    display : block;
+    text-decoration : none;
+    color : inherit;
+    font :  inherit;
+  }
+  p a {
+    display : inline;
+  }
+  li , menu, summary {
+    list-style-type : none;
+  }
+  ol {
+    counter-reset : revert;
+  }
+  h1 , h2 , h3 , h4 , h5 , h6 , p , span , a , strong , blockquote , i , b , u , em , pre , code , mark , del {
+    font :  inherit;
+    line-height :  1em;
+    text-decoration :  none;
+    color : inherit;
+    overflow-wrap : break-word;
+    text-wrap : pretty;
+  }
+  mark {
+    background-color : transparent;
+  }
+  blockquote::before , blockquote::after , q::before , q::after {
+    content : none;
+  }
+  form , input , textarea , select , button , label {
+    font :  inherit;
+    hyphens : auto;
+    background-color : transparent;
+    color : inherit;
+    display : block;
+    appearance : none;
+  }
+  fieldset {
+    border : none;
+  }
+  ::placeholder {
+    color : var(--color-terciario);
+  }
+  button , label {
+    cursor : pointer;
+  }
+  table , tr , td , th , tbody , thead , tfoot {
+    border-collapse : collapse;
+    border-spacing : 0;
+    font : inherit;
+  }
+  svg {
+    width : 100%;
+    height : initial;
+    display : block;
+    fill : currentColor;
+  }
+  body {
+    min-height : 100vh;
+    line-height : 1.5em;
+    color : inherit;
+    hyphens : auto;
+    -webkit-font-smoothing : antialiased;
+    -moz-osx-font-smoothing : grayscale;
+    font-family: var(--font-ppal);
+
+  }
+
+  figcaption{
+    display: none;
+  }
+
+
+  /* Una vez hemos incluido el archivo con las fuentes en formato .woff2, definimos 
+  las reglas @font-face con su ruta */
+
+
+@font-face {
+    font-family: 'n27regular';
+    src: url(./../fonts/n27-regular-webfont.woff2);
+    font-weight: normal;
+    font-style: normal;
+}
+
+/*HEADER*/
+
+/*Comenzamos con el header, que al tener un position fixed incluye también el z-index más alto. El background
+color es transparente para que se pueda visualizar el resto de la página, salvo cuando entra en 
+la sección de artistas, que cambiará con js.*/
+
+  .header{
+    width: 100%;
+    min-height: 2rem;
+    background-color: transparent;
+    padding: 1.5rem 4rem 0;
+    
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    z-index: 10;
+    top: 0;
+  }
+
+  /*Estilo específico para JS debido a la superposición del color primario al hacer scroll*/
+  .header.isActive{
+    background-color: var(--color-secundario);
+  }
+  .header__h1{
+    color: var(--color-primario);
+    width: 12rem;
+    /* background-color: red; */
+  }
+  
+
+  /* El enlace a los tickets se mantiene en toda la navegación y cambia de color (en realidad
+  cambia el archivo) cuando hacemos hover*/
+
+  .header__a--tickets :hover{
+    content: url(./../assets/svg/tickets_2.svg);
+    
+  }
+
+  .header__nav--menu{
+    max-width: 4%;
+    display: none;
+    margin: 0 0 0 14rem;
+  }
+  
+  .header__a--nav{
+    color: var(--color-primario);
+    font-size: 1.35rem;
+
+  }
+  .header__h2{
+    width: 20%;
+    color: var(--color-primario);  
+    margin: 0 0 0 9.5rem;
+  }
+
+  .header__a--tickets{
+    width: 210px;
+    min-height: 90px;
+  }
+  
+  .header__ul{
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: end;
+    align-items: center;
+    gap: 4rem;
+  }
+  
+  /*Cuando hacemos hover sobre los liS del navegador cambian al color terciario, algo que se 
+  mantiene sobre algunos de los elementos del resto de la web*/
+  
+  .header__li :hover{
+    color: var(--color-terciario);
+  }
+
+  /*Ajustamos el header al RESPONSIVE con el menú tipo hamburguesa. Hay ajustes específicos para
+  que el .header__h2, que contiene el CTA (Tickets), esté centrado en los diferentes dispositivos*/
+
+  @media (max-width: 1200px){
+    
+    .header__nav--menu{
+      display: block;
+      width: 30px;
+      height: 30px;
+    }
+    .header__h2{
+      margin: 0 0 0 7rem;
+    }
+    .header__nav{
+      width: 100%;
+    }
+    .header__ul{
+      flex-direction: column;
+      justify-content: center;
+      align-items: end;
+      gap: 1.5rem;
+      height: 0;
+      overflow: hidden;
+      transition: all .5s ease;
+    }
+    .header__ul.isVisible{
+      height: 12rem;
+    }
+  }
+
+  @media (max-width: 1000px){
+    .header__h2{
+      margin: 0 0 0 1rem;
+    }
+    .header__nav--menu{
+      width: 50px;
+      height: 30px;
+    }
+  }
+  @media (max-width: 800px){
+
+    .header__h1{
+      content: url(./../assets/svg/logo_2.svg);
+      width: 30px;
+    }
+    
+    .header__h2{
+      margin: 0 0 0 0rem;
+    }
+    .header__nav--menu{
+      margin-left: 8rem;
+        display: block;
+        width: 80px;
+        height: 40px;
+      
+    }
+  
+  }
+  @media (max-width: 600px){
+    .header__h1{
+      content: url(./../assets/svg/logo_2.svg);
+      width: 12rem;
+      height: 20px;
+    }
+    .header__a--tickets{
+      width: 180px;
+      min-height: 90px;
+    }
+    .header__h1{
+      width: 30px;
+      min-height: 60px;
+    }
+
+ 
+
+    /*Hacemos ajustes específicos para el tamaño de los elemenos en formato movil*/
+
+    @media (max-width: 400px){
+
+      .header{
+        min-height: 1rem;
+      }
+      .header__a--tickets{
+        width: 150px;
+        min-height: 90px;
+      }
+      .header__h1{
+        width: 10%;
+        color: var(--color-primario);
+      }
+      
+      .header__nav--menu{
+      margin-left: 8rem;
+        display: block;
+        width: 80px;
+        height: 40px;
+      
+    }
+    }
+  }
+
+
+/*CARROUSEL*/
+
+  /* La home esta formada por un div que contiene dos carrouseles: uno con vídeo y
+  otro con texto. Utilizamos flex column para colocar internamente uno encima del otro*/
+
+  #home {
+    width: 100%;
+    min-height: 100vh;
+    background-color: var(--color-secundario);
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: start;
+    align-items: start;
+    position: relative;
+    overflow: hidden;
+ 
+  }
+  .carrousel__arrow{
+
+    width: 100%;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+   
+    top: 45%;
+    padding: 0 8vh;
+   
+    color: rgba(240, 248, 255, 0.616);
+    font-size: 2rem;
+    position: absolute;
+    z-index: 9;
+  }
+
+  .carrousel__video{
+    min-height: 80vh;
+   
+  }
+  .carrousel__video--wrapper{
+    min-height: 100vh;
+    position: absolute;
+
+    display: grid;
+    
+    translate: calc( (100% / var(--num-videos)) * 0);
+    transition: all .5s ease;
+  }
+
+
+  .carrousel__video--vd{
+    min-height: 80vh;
+  }
+  .carrousel__info{
+    min-height: 20vh;
+
+  }
+  .carrousel__info--wrapper{
+    min-height: 20vh;
+    background-color: transparent;
+
+    display: grid;
+    position: absolute;
+    translate: calc( (100% / var(--num-videos)) * 0);
+    transition: all .5s ease;
+
+  }
+  .carrousel__ul{
+    width: 100%;
+    padding: 1.7rem 5rem;
+
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: start;
+    align-items: start;
+    gap: 2rem;
+  
+    text-transform: uppercase;
+    font-size: 4rem;
+    color: var(--color-primario);
+
+  }
+
+  /*Creamos esta clase para aquellos títulos en los que los textos son más largos, con una medida
+  no demasiado exagerada para que no se note demasiado*/
+
+  .carrousel__ul--lower{
+    font-size: 3.6rem;
+  }
+ 
+
+
+  /*RESPONSIVE CARROUSEL*/
+
+  @media (max-width:1200px){
+    .carrousel__ul{
+      font-size: 2rem;
+      gap: 1rem;
+    }
+    .carrousel__ul--lower{
+      font-size: 1.5rem;
+    }
+    
+  }
+
+
+
+  /*SECTION ARTISTAS*/
+
+
+#section__artistas{
+    width: 100%;
+    min-height: 100vh;
+    background-color: var(--color-secundario);
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.artistas__h2{
+  min-height: 30vh;
+  color: var(--color-primario);
+  padding-top: 10rem;
+  font-size: 1.3rem;
+  text-transform: uppercase;
+}
+
+.artistas__wrapper{
+  width: 90%;
+  min-height: 75vh;
+  margin: auto;
+  margin-bottom: 7rem;
+ 
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2.4rem;
+  row-gap: 2.6rem;
+}
+
+.artistas__wrapper--box{
+  width: 100%;
+  height: 20rem;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-between;
+ 
+}
+.artistas__wrapper--img{
+  width: 100%;
+  height: 75%;
+  background-size: cover;
+  filter: grayscale(0);
+  
+ 
+}
+
+/*Cuando hacemos hover sobre las imágenes de la grid, pasan a filter grayscale*/
+
+.artistas__wrapper--img :hover{
+  filter: grayscale(1);
+}
+
+
+.artistas__wrapper--info{
+  width: 100%;
+  height: 25%;
+  background-color: var(--color-primario);
+  text-transform: uppercase;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  gap: 0.9rem;
+  padding: 1rem;
+}
+.artistas__wrapper--name{
+  font-size: 1.8rem;
+}
+
+.artistas__wrapper--lower{
+  font-size: 1.3rem;
+}
+.artistas__wrapper--link{
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+  gap: 2.5rem;
+  font-size: 1.2rem;
+}
+
+.artistas__wrapper--link :hover{
+  color: var(--color-terciario);
+
+}
+
+
+
+
+/*FOOTER*/
+
+.footer__wrapper{
+  width: 100%;
+  min-height: 20vh;
+  background-color: var(--color-primario);
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: start;
+  align-items: center;
+  gap: 1.2rem;
+  padding-top: 1rem;
+}
+
+.organisms__footer{
+  width: 85%;
+  min-height: 13vh;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+
+}
+.colab__footer{
+  width: 20%;
+  min-height: 12vh;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: start;
+  align-items: start;
+  gap: 1rem;
+  padding-left: 1rem;
+
+}
+.colab__footer--img{
+  width: 90px;
+  min-height: 10px;
+  margin-top: 0.7rem;
+  
+}
+
+.support__footer{
+  width: 50%;
+  min-height: 12vh;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: start;
+  align-items: start;
+  gap: 1rem;
+  padding-left: 1rem;
+}
+.support__footer--ul{
+  width: 100%;
+  min-height: 7vh;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: start;
+  align-items: center;
+  gap: 2rem;
+
+}
+.support__footer--li{
+  width: 90px;
+  min-height: 20px;
+}
+
+
+.partner__footer{
+  width: 20%;
+  min-height: 12vh;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: start;
+  align-items: start;
+  gap: 1rem;
+  padding-left: 1rem;
+}
+
+.partner__footer--img{
+  width: 110px;
+  min-height: 30px;
+}
+
+.info__footer{
+  width: 85%;
+  min-height: 3vh;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: start;
+  align-items: center;
+
+}
+
+
+/*RESPONSIVE SECTIONS ARTIST y FOOTER*/
+
+@media (max-width: 1000px){
+
+    .artistas__wrapper{
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .artistas__h2{
+      padding-top: 10rem;
+    }
+    
+  }
+ 
+
+  @media (max-width: 500px){
+ 
+    .artistas__wrapper{
+      grid-template-columns: 1fr;
+    }
+
+  
+    .organisms__footer {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: start;
+    align-items: center;
+    gap: 0rem;
+    }
+
+    .colab__footer{
+      width: 90%;
+      align-items: center;
+    }
+    .support__footer{
+      width: 90%;
+      align-items: center;
+
+    }
+    .support__footer--li{
+      width: 300px;
+      min-height: 50px;
+    }
+
+    .partner__footer{
+      width: 90%;
+      align-items: center;
+      gap: 1rem;
+    }
+   
+   }
+
+  
+
+
+
+
+
+
+
+
+
+ 

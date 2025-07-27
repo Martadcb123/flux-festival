@@ -1,0 +1,633 @@
+/* Añadimos el reset y definimos unas custom properties generales dentro del root que 
+usaremos en toda la web*/
+
+:root {
+    font-size : 100%;
+    font-family : system-ui, sans-serif;
+    scroll-behavior : smooth;
+    --color-primario: #ff7070;
+    --color-secundario: rgb(15, 15, 15);
+    --color-terciario: blanchedalmond;
+    --font-ppal: 'n27regular';
+    --num-videos: 10;
+  }
+  * , *::before , *::after {
+    margin : 0;
+    padding : 0;
+    border : 0;
+    box-sizing : border-box;
+    vertical-align : baseline;
+  }
+  *::before , *::after {
+    display : block;
+  }
+  img , picture , video , iframe , figure , canvas {
+    max-width : 100%;
+    display : block;
+    width : 100%;
+    height : 100%;
+    object-fit: cover;
+    object-position : center center;
+    overflow: hidden;
+    
+  }
+  a {
+    display : block;
+    text-decoration : none;
+    color : inherit;
+    font :  inherit;
+  }
+  p a {
+    display : inline;
+  }
+  li , menu, summary {
+    list-style-type : none;
+  }
+  ol {
+    counter-reset : revert;
+  }
+  h1 , h2 , h3 , h4 , h5 , h6 , p , span , a , strong , blockquote , i , b , u , em , pre , code , mark , del {
+    font :  inherit;
+    line-height :  1em;
+    text-decoration :  none;
+    color : inherit;
+    overflow-wrap : break-word;
+    text-wrap : pretty;
+  }
+  mark {
+    background-color : transparent;
+  }
+  blockquote::before , blockquote::after , q::before , q::after {
+    content : none;
+  }
+  form , input , textarea , select , button , label {
+    font :  inherit;
+    hyphens : auto;
+    background-color : transparent;
+    color : inherit;
+    display : block;
+    appearance : none;
+  }
+  fieldset {
+    border : none;
+  }
+  ::placeholder {
+    color : var(--color-terciario);
+  }
+  button , label {
+    cursor : pointer;
+  }
+  table , tr , td , th , tbody , thead , tfoot {
+    border-collapse : collapse;
+    border-spacing : 0;
+    font : inherit;
+  }
+  svg {
+    width : 100%;
+    height : initial;
+    display : block;
+    fill : currentColor;
+  }
+  body {
+    min-height : 100vh;
+    line-height : 1.5em;
+    color : inherit;
+    hyphens : auto;
+    -webkit-font-smoothing : antialiased;
+    -moz-osx-font-smoothing : grayscale;
+    font-family: var(--font-ppal);
+
+  }
+
+  figcaption{
+    display: none;
+  }
+
+
+  /* Una vez hemos incluido el archivo con las fuentes en formato .woff2, definimos 
+  las reglas @font-face con su ruta */
+
+
+@font-face {
+    font-family: 'n27regular';
+    src: url(./../fonts/n27-regular-webfont.woff2);
+    font-weight: normal;
+    font-style: normal;
+}
+
+/*HEADER*/
+
+/*Para el header, utilizaremos el mismo código que en el archivo de index.css*/
+
+
+.header{
+  width: 100%;
+  min-height: 2rem;
+  background-color: var(--color-secundario);
+  padding: 1.5rem 4rem 0;
+  
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  z-index: 10;
+  top: 0;
+}
+
+
+
+.header__h1{
+  color: var(--color-primario);
+  width: 12rem;
+  /* background-color: red; */
+}
+
+
+/* El enlace a los tickets se mantiene en toda la navegación y cambia de color (en realidad
+cambia el archivo) cuando hacemos hover*/
+
+.header__a--tickets :hover{
+  content: url(./../assets/svg/tickets_2.svg);
+  
+}
+
+.header__nav--menu{
+  max-width: 4%;
+  display: none;
+  margin: 0 0 0 14rem;
+}
+
+.header__a--nav{
+  color: var(--color-primario);
+  font-size: 1.35rem;
+
+}
+.header__h2{
+  width: 20%;
+  color: var(--color-primario);  
+  margin: 0 0 0 9.5rem;
+  /* background-color: blue; */
+}
+
+.header__a--tickets{
+  width: 210px;
+  min-height: 90px;
+  /* background-color: pink; */
+}
+
+.header__ul{
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: end;
+  align-items: center;
+  gap: 4rem;
+}
+
+/*Cuando hacemos hover sobre los liS del navegador cambian al color terciario, algo que se 
+mantiene sobre algunos de los elementos del resto de la web*/
+
+.header__li :hover{
+  color: var(--color-terciario);
+}
+
+/*Ajustamos el header al RESPONSIVE con el menú tipo hamburguesa. Hay ajustes específicos para
+que el .header__h2, que contiene el CTA (Tickets), esté centrado en los diferentes dispositivos*/
+
+@media (max-width: 1200px){
+  
+  .header__nav--menu{
+    display: block;
+    width: 30px;
+    height: 30px;
+  }
+  .header__h2{
+    margin: 0 0 0 6rem;
+  }
+  .header__nav{
+    width: 100%;
+  }
+  .header__ul{
+    flex-direction: column;
+    justify-content: center;
+    align-items: end;
+    gap: 1.5rem;
+    height: 0;
+    overflow: hidden;
+    transition: all .5s ease;
+  }
+  .header__ul.isVisible{
+    height: 12rem;
+  }
+}
+
+@media (max-width: 1000px){
+  .header__h2{
+    margin: 0 0 0 1rem;
+  }
+  .header__nav--menu{
+    width: 50px;
+    height: 30px;
+  }
+}
+@media (max-width: 800px){
+
+  .header__h1{
+    content: url(./../assets/svg/logo_2.svg);
+    width: 30px;
+  }
+  
+  .header__h2{
+    margin: 0 0 0 0rem;
+  }
+  .header__nav--menu{
+    margin-left: 8rem;
+      display: block;
+      width: 80px;
+      height: 40px;
+    
+  }
+
+}
+@media (max-width: 600px){
+  .header__h1{
+    content: url(./../assets/svg/logo_2.svg);
+    width: 12rem;
+    height: 20px;
+  }
+  .header__a--tickets{
+    width: 180px;
+    min-height: 90px;
+  }
+  .header__h1{
+    width: 30px;
+    min-height: 60px;
+  }
+
+
+
+  /*Hacemos ajustes específicos para el tamaño de los elemenos en formato movil*/
+
+  @media (max-width: 400px){
+
+    .header{
+      min-height: 1rem;
+    }
+    .header__a--tickets{
+      width: 150px;
+      min-height: 90px;
+    }
+    .header__h1{
+      width: 10%;
+      color: var(--color-primario);
+    }
+    
+    .header__nav--menu{
+    margin-left: 8rem;
+      display: block;
+      width: 80px;
+      height: 40px;
+    
+  }
+  }
+}
+
+
+
+/*SECTION ABOUT*/
+
+
+.section__about{
+    width: 100%;
+    min-height: 89vh;
+    background-color: var(--color-secundario);
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.about__h2{
+  color: var(--color-primario);
+  font-size: 1.3rem;
+  text-transform: uppercase;
+}
+
+
+.about__wrapper{
+  width: 87%;
+  margin-top: 4rem;
+
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: start;
+  gap: 5rem;
+}
+
+.about__wrapper--img{
+  width: 40%;
+  height: 60vh;
+  margin-top: 4rem;
+
+}
+
+.about__wrapper--info{
+  margin-top: 5rem;
+  width: 60%;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: start;
+  align-items: center;
+  gap: 2.5rem;
+}
+.about__wrapper--fest{
+  font-size: 1.1rem;
+  color: var(--color-terciario);
+  line-height: 1.4rem;
+  word-break: auto-phrase;
+  padding-top: 2rem;
+}
+.about__wrapper--interact{
+  width: 100%;
+  min-height: 28vh;
+  margin: 2rem 0 0 0;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: start;
+  gap: 1rem;
+}
+
+.about__wrapper--access{
+  width: 100%;
+  min-height: 20vh;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: start;
+  align-items: start;
+  gap: 1.5rem;
+}
+
+.about__wrapper--loc{
+  width: 100%;
+  min-height: 10vh;
+  font-size: 1.1rem;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  gap: 0.7rem;
+  color: var(--color-primario);
+}
+
+.about__wrapper--contact{
+  width: 100%;
+  font-size: 1.1rem;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  gap: 0.7rem;
+  color: var(--color-primario);
+}
+
+.about__wrapper--ul{
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 0.5rem;
+}
+
+.about__wrapper--li :hover{
+  color: var(--color-terciario);
+}
+
+.about__wrapper--p :hover{
+  color: var(--color-terciario);
+}
+
+.about__wrapper--newsletter{
+  width: 100%;
+  min-height: 20vh;
+  font-size: 1.1rem;
+  color: var(--color-primario);
+  margin: 0.5rem 0 0 0;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: start;
+  gap: 1rem;
+}
+
+.about__wrapper--form{
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: start;
+  align-items: start;
+  gap: 1rem;
+}
+.input__form{
+  width: 100%;
+  background: 0 0;
+  line-height: 2.2rem;
+  opacity: .7;
+  border-bottom: .1rem solid;;
+}
+.input__button{
+  width: 5rem;
+  margin: 1rem 0 0 0;
+}
+
+.input__button :hover{
+  content: url(./../assets/svg/send_2.svg);
+}
+
+/*FOOTER*/
+
+.footer__wrapper{
+  width: 100%;
+  min-height: 20vh;
+  background-color: var(--color-primario);
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: start;
+  align-items: center;
+  gap: 1.2rem;
+  padding-top: 1rem;
+}
+
+.organisms__footer{
+  width: 85%;
+  min-height: 13vh;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+
+}
+.colab__footer{
+  width: 20%;
+  min-height: 12vh;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: start;
+  align-items: start;
+  gap: 1rem;
+  padding-left: 1rem;
+
+}
+.colab__footer--img{
+  width: 90px;
+  min-height: 10px;
+  margin-top: 0.7rem;
+  
+}
+
+.support__footer{
+  width: 50%;
+  min-height: 12vh;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: start;
+  align-items: start;
+  gap: 1rem;
+  padding-left: 1rem;
+}
+.support__footer--ul{
+  width: 100%;
+  min-height: 7vh;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: start;
+  align-items: center;
+  gap: 2rem;
+
+}
+.support__footer--li{
+  width: 90px;
+  min-height: 20px;
+}
+
+
+.partner__footer{
+  width: 20%;
+  min-height: 12vh;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: start;
+  align-items: start;
+  gap: 1rem;
+  padding-left: 1rem;
+}
+
+.partner__footer--img{
+  width: 110px;
+  min-height: 30px;
+}
+
+.info__footer{
+  width: 85%;
+  min-height: 3vh;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: start;
+  align-items: center;
+
+}
+
+
+/*RESPONSIVE SECTION ABOUT Y FOOTER*/
+
+@media (max-width: 1000px){
+
+    
+    .about__wrapper{
+      display: flex;
+      flex-flow: column nowrap;
+      gap: 1rem;
+      margin-top: 10rem;
+      margin-bottom: 3rem;
+      
+    }
+    
+    .about__wrapper--img{
+      margin: auto;
+      width: 95%;
+      min-height: 40vh;
+    }
+
+    .about__wrapper--info{
+      width: 95%;
+      margin-top: 3rem;
+      gap: 3.5rem;
+    }
+    .about__wrapper--interact{
+      display: flex;
+      flex-flow: column nowrap;
+      min-height: 25vh;
+      gap: 1rem;
+    }
+
+    .about__wrapper--access{
+      gap: 2rem;
+    }
+
+    .about__wrapper--loc{
+      width: 95%;
+      min-height: 5vh;
+    }
+
+    .about__wrapper--contact{
+      min-height: 10vh;
+    }
+  }
+ 
+
+  @media (max-width: 500px){
+ 
+    
+  
+    .about__wrapper{
+      display: flex;
+      flex-flow: column nowrap;
+  
+    }
+  
+    .about__wrapper--img{
+      min-height: 35vh;
+    }
+  
+    .about__wrapper--info{
+  
+      min-height: 40vh;
+    }
+  
+    .organisms__footer {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: start;
+    align-items: center;
+    gap: 0rem;
+    }
+
+    .colab__footer{
+      width: 90%;
+      align-items: center;
+    }
+    .support__footer{
+      width: 90%;
+      align-items: center;
+
+    }
+    .support__footer--li{
+      width: 300px;
+      min-height: 50px;
+    }
+
+    .partner__footer{
+      width: 90%;
+      align-items: center;
+      gap: 1rem;
+    }
+   
+   }
+
+  
